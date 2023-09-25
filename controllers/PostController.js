@@ -60,10 +60,12 @@ const getPosts = async (req, res) => {
       posts,
     });
   } catch (error) {
+    console.log(error);
     return res.json({
       success: false,
       message:
         "An error occurred while fetching posts. Please try again later.",
+      error
     });
   }
 };
