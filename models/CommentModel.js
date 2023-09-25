@@ -1,14 +1,12 @@
-// comment schema collection
+const { Router } = require("express");
+const router = Router();
+const {
+  createComment,
+  deleteComment,
+} = require("../controllers/CommentController");
+const { verifyToken } = require("../config/Jwt");
 
-const { Schema, model } = require("mongoose");
-const commentSchema = new Schema(
-  {
-    text: { type: String, require: true },
-    User: { type: Schema.Types.ObjectId, ref: "User" },
-    Post: { type: Schema.Types.ObjectId, ref: "Posts" },
-    Likes: [{ type: Schema.Types.ObjectId, ref: "Likes" }],
-  },
-  { timestamps: true }
-);
+router.post("/create-comment/:userId", verifyToken, createComment);
+router.delete("/delete-comment/:commentId", verifyToken, deleteComment);
 
-module.exports = model("Comments", commentSchema);
+module.exports = router;
