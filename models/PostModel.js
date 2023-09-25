@@ -6,10 +6,10 @@ const postSchema = new Schema(
     text: { type: String, require: true },
     postImage: { type: String },
     User: { type: Schema.Types.ObjectId, ref: "User" },
-    Comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
-    Likes: [{ type: Schema.Types.ObjectId, ref: "Like" }],
+    Comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
+    Likes: [{ type: Schema.Types.ObjectId, ref: "Likes" }],
   },
   { timestamps: true }
 );
 
-module.exports = model("Post", postSchema);
+module.exports = model("Posts", postSchema);
