@@ -34,18 +34,18 @@ const getPosts = async (req, res) => {
       .sort("-createdAt")
       .populate("User")
       .populate({
-        path: "Comment",
+         path: 'Comments',
         populate: {
           path: "User",
         },
       })
       .populate({
-        path: "Comment",
+        path: 'Comments',
         populate: {
-          path: "Like",
+          path: "Likes",
         },
       })
-      .populate("Like");
+      .populate("Likes");
 
     if (!posts || posts.length === 0) {
       return res.json({
