@@ -82,6 +82,31 @@ const Login = async (req, res) => {
   }
 };
 
+// Get Specific User Detatis
+
+const GetUserId = async (req, res) => {
+  const { userId } = req.params;
+  try {
+    const user = await UserModel.findById(userId);
+    if (!user) {
+      return res.json({
+        success: false,
+        message: "User Not Found.",
+      });
+    }
+    user.password = undefined;
+    return res.json({
+      success: true,
+      user,
+    });
+  } catch (error) {
+    return res.json({
+      success: false,
+      message:
+        "An error occurred during Getting User Details .Please try again later.",
+    });
+  }
+};
 // Account delete
 
 const AccountDelete = async (req, res) => {
@@ -111,4 +136,5 @@ module.exports = {
   Signup,
   Login,
   AccountDelete,
+  GetUserId,
 };
