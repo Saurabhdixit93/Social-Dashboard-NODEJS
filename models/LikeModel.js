@@ -10,4 +10,4 @@ const likeSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = model("Like", likeSchema);
+module.exports = model("Likes", likeSchema);
