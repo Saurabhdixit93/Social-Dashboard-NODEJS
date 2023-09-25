@@ -3,9 +3,8 @@ const PostModel = require("../models/PostModel");
 const LikeModel = require("../models/LikeModel");
 
 const createComment = async (req, res) => {
-  const { postId } = req.params;
-  const { userId } = req.query;
-  const { text } = req.body;
+  const { userId } = req.params;
+  const { text, postId } = req.body;
   try {
     const post = await PostModel.findById(postId);
     if (post) {
