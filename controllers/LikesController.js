@@ -10,9 +10,9 @@ const toggleLike = async (req, res) => {
   let type = req.query.type;
   try {
     if (type == "post") {
-      likable = await Post.findById(likableId).populate("Like");
+      likable = await Post.findById(likableId).populate("Likes");
     } else {
-      likable = await Comments.findById(likableId).populate("Like");
+      likable = await Comments.findById(likableId).populate("Likes");
     }
     let existingLike = await Likes.findOne({
       User: userId,
