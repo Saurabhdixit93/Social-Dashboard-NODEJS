@@ -25,6 +25,10 @@ const toggleLike = async (req, res) => {
 
       await Likes.deleteOne({ _id: existingLike._id });
       deleted = true;
+      return res.json({
+        success:false,
+        message:"Post Disliked !",
+      })
     } else {
       newLike = await Likes.create({
         User: userId,
