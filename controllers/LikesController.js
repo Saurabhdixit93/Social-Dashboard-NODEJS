@@ -36,9 +36,11 @@ const toggleLike = async (req, res) => {
     }
     return;
   } catch (error) {
+    console.log(error);
     return res.json({
       success: false,
       message: "Internal Server Errorr ..",
+      error,
     });
   }
 };
