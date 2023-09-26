@@ -5,7 +5,7 @@ const Likes = require("../models/LikeModel");
 const toggleLike = async (req, res) => {
   let likable;
   let deleted = false;
-  let { likableId } = req.query;
+   let likableId = req.query.id ;
   let { userId } = req.params;
   let type = req.query.type;
   try {
