@@ -34,7 +34,9 @@ const toggleLike = async (req, res) => {
       likable.Likes.push(newLike._id);
       likable.save();
     }
-    return;
+    return res.json({
+      success:true,
+    });
   } catch (error) {
     console.log(error);
     return res.json({
